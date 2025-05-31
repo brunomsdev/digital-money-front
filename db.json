@@ -1,0 +1,36 @@
+{
+  "transactions": [
+    {
+      "id": "1",
+      "title": "Netflix",
+      "price": 55.9,
+      "transactionType": "withdraw",
+      "category": "Entretenimento",
+      "date": "17/05/2025"
+    },
+    {
+      "id": "fb5d",
+      "title": "Salary",
+      "price": 12000,
+      "category": "Salary",
+      "transactionType": "deposit",
+      "date": "17/05/2025"
+    },
+    {
+      "id": "5f7d",
+      "title": "Curso",
+      "price": 2500,
+      "category": "Educação",
+      "transactionType": "withdraw",
+      "date": "17/05/2025"
+    },
+    {
+      "id": "a009",
+      "title": "Gift",
+      "price": 80,
+      "category": "Birthday gift",
+      "transactionType": "withdraw",
+      "date": "24/05/2025"
+    }
+  ]
+}
