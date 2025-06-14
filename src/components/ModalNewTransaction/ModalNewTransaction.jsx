@@ -67,11 +67,11 @@ export default function ModalNewTransaction({ open, setOpen }) {
               handleClickTransactionType={handleClickTransactionType}
               transactionType={transactionType}
               handhandleNewTransaction={handleNewTransaction}
+              titleValue={title}
+              proceValue={price}
+              categoryValue={category}
+              transactionTypeValue={transactionType}
             />
-            titleValue={title}
-            proceValue={price}
-            categoryValue={category}
-            transactionTypeValue={transactionType}
           </DialogPanel>
         </div>
       </div>
