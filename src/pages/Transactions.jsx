@@ -1,20 +1,29 @@
-import { ArrowCircleDown, ArrowCircleUp, CurrencyDollar } from "phosphor-react";
+import {
+  ArrowCircleDown,
+  ArrowCircleUp,
+  CurrencyDollar,
+  TrashSimple,
+} from "phosphor-react";
 import CardTransaction from "../components/CardTransaction/CardTransaction";
 import ModalNewTransaction from "../components/ModalNewTransaction/ModalNewTransaction";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Header from "../components/Header/Header";
+import { useTransactionContext } from "../contexts/TransactionContext";
+import { IconButton } from "@material-tailwind/react";
 
 function TransactionsPage() {
-  const [allTransactions, setAllTransactions] = useState([]);
   const [open, setOpen] = useState(false);
 
-  const navigate = useNavigate();
-
-  function handleEditTransaction(id) {
-  navigate("/transactions/" + id);
-  }
+  const {
+    allTransactions,
+    setAllTransactions,
+    handleEditTransaction,
+    depositsResult,
+    withdrawsResult,
+    total,
+    handleDeleteTransaction,
+  } = useTransactionContext();
 
   console.log(allTransactions);
   async function fetchTransactions() {
@@ -31,25 +40,6 @@ function TransactionsPage() {
     fetchTransactions();
   }, []);
 
-  const depositsResult = allTransactions.reduce((prev, current) => {
-    if (current.transactionType === "deposit") {
-      return prev + current.price;
-    }
-
-    return prev;
-  }, 0);
-
-  const withdrawsResult = allTransactions.reduce((prev, current) => {
-    if (current.transactionType === "withdraw") {
-      return prev + current.price;
-    }
-
-    return prev;
-  }, 0);
-
-  const total = depositsResult - withdrawsResult;
-
-  console.log(withdrawsResult);
   return (
     <div className="min-h-screen flex flex-col bg-gray-100">
       <Header handleOpenModal={handleOpenModal} />
@@ -86,14 +76,16 @@ function TransactionsPage() {
                 <th className="px-6 py-3 pb-4 font-medium">Valor</th>
                 <th className="px-6 py-3 pb-4 font-medium">Categoria</th>
                 <th className="px-6 py-3 pb-4 font-medium">Data</th>
+                <th className="px-6 py-3 pb-4 font-medium">Ações</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-100">
               {allTransactions.map((transaction, index) => {
                 return (
-                  <tr className="hover:bg-gray-50 bg-white" 
-                  key={index}
-                  onClick={() => handleEditTransaction(transaction.id)}
+                  <tr
+                    className="hover:bg-gray-50 bg-white"
+                    key={index}
+                    onClick={() => handleEditTransaction(transaction.id)}
                   >
                     <td className="px-6 py-4">{transaction.title}</td>
                     <td className="px-6 py-4 text-green-500 font-medium">
@@ -104,6 +96,17 @@ function TransactionsPage() {
                     </td>
                     <td className="px-6 py-4">{transaction.category}</td>
                     <td className="px-6 py-4">{transaction.date}</td>
+                    <td className="px-6 py-4">
+                      <button
+                        className="text-blue-500 hover:text-blue-700"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleDeleteTransaction(transaction.id);
+                        }}
+                      >
+                        <TrashSimple size={32} weight="fill" />
+                      </button>
+                    </td>
                   </tr>
                 );
               })}

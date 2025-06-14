@@ -1,20 +1,12 @@
 {
   "transactions": [
     {
-      "id": "1",
       "title": "Netflix",
-      "price": 55.9,
-      "transactionType": "withdraw",
+      "price": 100,
       "category": "Entretenimento",
-      "date": "17/05/2025"
-    },
-    {
-      "id": "fb5d",
-      "title": "Salary",
-      "price": 12000,
-      "category": "Salary",
-      "transactionType": "deposit",
-      "date": "17/05/2025"
+      "transactionType": "withdraw",
+      "date": "07/06/2025",
+      "id": "1"
     },
     {
       "id": "5f7d",
@@ -25,12 +17,12 @@
       "date": "17/05/2025"
     },
     {
-      "id": "a009",
-      "title": "Gift",
-      "price": 80,
+      "title": "Gift and flowers",
+      "price": 300,
       "category": "Birthday gift",
       "transactionType": "withdraw",
-      "date": "24/05/2025"
+      "date": "07/06/2025",
+      "id": "a009"
     }
   ]
 }

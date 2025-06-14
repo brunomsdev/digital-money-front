@@ -10,6 +10,9 @@ export default function FormTransaction( {
   handleClickTransactionType, 
   transactionType,
   handleNewTransaction,
+  
+  formTitle = "Cadastrar transação",
+  buttonText = "Cadastrar",
 
   titleValue = "",
   priceValue = "",
@@ -23,7 +26,7 @@ export default function FormTransaction( {
               as="h1"
               className="text-2xl font-bold text-gray-900 mb-5"
             >
-              Cadastrar transação
+              {formTitle}
             </h1>
             <div className="mt-2 w-full space-y-5">
               <input
@@ -78,7 +81,7 @@ export default function FormTransaction( {
                 onClick={handleNewTransaction}
                 className="w-full h-[50px] items-center justify-center rounded-md bg-emerald-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-emerald-500 cursor-pointer"
               >
-                Cadastrar
+                {buttonText}
               </button>
             </div>
           </div>
