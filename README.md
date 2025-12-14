@@ -35,7 +35,7 @@ React application architecture and state management.
 
 ---
 
-## ▶️ Running the project locally
+## Running the project locally
 
 ```bash
 npm install
